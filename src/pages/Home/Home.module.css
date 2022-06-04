@@ -1,0 +1,56 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 960px;
+  margin: 60px auto;
+}
+
+.content {
+  padding-right: 30px;
+}
+
+.sidebar {
+  padding-left: 30px;
+}
+
+.sidebar form {
+  padding: 20px;
+  background: #e4ee;
+  border-radius: 10px;
+}
+
+.sidebar input,
+.sidebar select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.sidebar label {
+  margin: 0 auto 20px;
+  display: block;
+  color: #fff;
+}
+
+.sidebar button {
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 6px 12px;
+  background-color: transparent;
+}
+
+.sidebar h3 {
+  color: #e4ee;
+  margin-bottom: 20px;
+}
+
+.sidebar aside {
+  margin-top: 40px;
+  color: #40ade4;
+}
+.sidebar aside li {
+  margin: 10px;
+}
