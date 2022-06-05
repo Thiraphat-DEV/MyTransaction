@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //required function addToDocument
 import { useFirestore } from "../../Hooks/useFirestore";
 //component children of HomePage
@@ -15,9 +15,17 @@ const Transaction = ({ uid }) => {
     //use function add to Doc
     //  add unique id of user from authcontext with props
     addDocument({ uid, name, money });
-    setName("");
-    setMoney("");
+
+    //check send to transaction document is  success
   };
+
+  useEffect(() => {
+    if (response.success) {
+      setName("");
+      setMoney("");
+    }
+    //rerender everytime of send to document success
+  }, [response.success]);
   return (
     <form onSubmit={submitTransaction}>
       <label htmlFor="name">
