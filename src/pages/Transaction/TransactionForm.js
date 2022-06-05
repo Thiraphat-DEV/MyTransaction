@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //required function addToDocument
 import { useFirestore } from "../../Hooks/useFirestore";
 //component children of HomePage
-const Transaction = ({ uid }) => {
+const TransactionForm = ({ uid }) => {
   const [name, setName] = useState("");
   const [money, setMoney] = useState("");
   //get function addDocument
@@ -51,4 +51,4 @@ const Transaction = ({ uid }) => {
   );
 };
 
-export default Transaction;
+export default TransactionForm;

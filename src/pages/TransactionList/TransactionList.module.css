@@ -1,0 +1,37 @@
+
+/* transaction */
+.transaction li {
+  margin: 30px auto;
+  border: 1px solid #f9f9f9;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, .2);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid #40ade4;
+
+}
+
+
+.transaction .name {
+  color: #888;
+  font-size: 1.5rem;
+}
+
+.transaction .money {
+  margin-left: auto;
+  margin-right: 40px;
+  color: #888;
+  font-weight: 800;
+  font-size: 1.7rem;
+}
+
+.transaction button {
+  position: absolute;
+  cursor: pointer;
+  border: noneTransactionList;
+  line-height: 0;
+  top: 0;
+  color: #e55;
+}
