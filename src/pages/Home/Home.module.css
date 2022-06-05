@@ -40,6 +40,9 @@
   border: 3px solid #fff;
   padding: 6px 12px;
   cursor: pointer;
+  display: block;
+  width: 250px;
+  font-size: 1rem;
   background-color: transparent;
 }
 

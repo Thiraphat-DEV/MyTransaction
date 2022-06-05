@@ -1,4 +1,4 @@
-import { projectFirestore, timestamp} from "../firebase/config";
+import { projectFirestore, timestamp } from "../firebase/config";
 //require Hook for change state
 import { useReducer, useState, useEffect } from "react";
 
@@ -14,17 +14,37 @@ const initstate = {
 const firestoreReducer = (state, action) => {
   switch (action.type) {
     case "IS_PENDING":
-      return { ...state, isPending: true };
+      return {
+        ...state,
+        isPending: true,
+        document: null,
+        success: false,
+        error: null,
+      };
     case "ADD_DOCUMENT":
       return {
         ...state,
         isPending: false,
         document: action.payload,
         success: true,
-	error:null,
+        error: null,
       };
-case 'ERROR':
-	return {...state, isPending:false, document: null,success: false, error:action.payload }
+    case "DELETE_DOCUMENT":
+      return {
+        ...state,
+        isPending: false,
+        document: null, //null of value after for deleted
+        success: true,
+        error: null,
+      };
+    case "ERROR":
+      return {
+        ...state,
+        isPending: false,
+        document: null,
+        success: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
@@ -47,22 +67,33 @@ export const useFirestore = (collection) => {
     dispatch({ type: "IS_PENDING" });
 
     try {
-	    //before request you are check timestamp
-	const createdAt = timestamp.fromDate(new Date()) // Date now
-      const added = await referenceCollection.add({...doc, createdAt});
+      //before request you are check timestamp
+      const createdAt = timestamp.fromDate(new Date()); // Date now
+      const added = await referenceCollection.add({ ...doc, createdAt });
       dispatchNotCanCel({ type: "ADD_DOCUMENT", payload: added });
     } catch (error) {
-	    dispatchNotCanCel({type: 'ERROR', payload: error.message})
+      dispatchNotCanCel({ type: "ERROR", payload: error.message });
     }
   };
 
   //delete a document
-  const deleteDocument = async (id) => {};
+  const deleteDocument = async (id) => {
+    dispatch({ type: "IS_PENDING" });
+
+    try {
+       await referenceCollection.doc(id).delete();
+      // no payload after deleted content
+      dispatchNotCanCel({ type: "DELETE_DOCUMENT"});
+    } catch (error) {
+      dispatchNotCanCel({ type: "ERROR", payload: error.message });
+      console.log(error.message);
+    }
+  };
   //clean up function after update state
   useEffect(() => {
     //remove old state and replace new state
     return () => setIsCancelled(true);
   }, []);
 
-  return {addDocument, response}
+  return { addDocument, response, deleteDocument };
 };

@@ -30,8 +30,14 @@
 .transaction button {
   position: absolute;
   cursor: pointer;
-  border: noneTransactionList;
+  border: none;
   line-height: 0;
-  top: 0;
+  top: 20;
+  width: 30px;
+  height: 20px;
+  border-radius: 3em;
+  display: inline-block;
+  left: 93%;
   color: #e55;
+  font-size: 1.2rem;
 }

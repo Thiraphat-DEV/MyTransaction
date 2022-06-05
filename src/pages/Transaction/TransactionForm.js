@@ -9,7 +9,7 @@ const TransactionForm = ({ uid }) => {
   const { addDocument, response } = useFirestore("transactions");
 
   const submitTransaction = (e) => {
-    //protect refresh
+    //protect refresh form
     e.preventDefault();
 
     //use function add to Doc
@@ -29,7 +29,7 @@ const TransactionForm = ({ uid }) => {
   return (
     <form onSubmit={submitTransaction}>
       <label htmlFor="name">
-        <span>Transaction Name: </span>
+        <span>Menu Name: </span>
         <input
           value={name}
           type="text"
