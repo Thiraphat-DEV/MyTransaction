@@ -46,7 +46,7 @@ const TransactionForm = ({ uid }) => {
           onChange={(e) => setMoney(e.target.value)}
         />
       </label>
-      <button>Add</button>
+      <button className="addmenu">Add</button>
     </form>
   );
 };

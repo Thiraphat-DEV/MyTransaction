@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  background: #effaf0;
+  background: #76FF03;
   padding: 20px 10px;
   box-sizing: border-box;
 }
@@ -24,6 +24,16 @@
 
 
 .navbar a {
-	color: #e55;
+	color: #D84315;
+  border:2px solid #40ad ;
+  border-radius: .5em;
+  background-color: #ee5;
+
+   border: none;
 	text-decoration: none;
+}
+.navbar a:hover {
+  outline: none;
+ 
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
 }

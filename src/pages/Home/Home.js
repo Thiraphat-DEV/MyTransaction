@@ -9,8 +9,10 @@ import TransactionForm from "../Transaction/TransactionForm";
 //required Hook useCollection with get realtime data
 import { useCollection } from "../../Hooks/useCollection";
 const Home = () => {
+  //get user from context
   const { user } = useAuthContext();
 
+  // add argument and rules of store collection
   const { documents, error } = useCollection(
     "transactions",
     [
@@ -26,7 +28,6 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        List of Money
         {error && <p>{error}</p>}
         {documents && <TransactionList list={documents} />}
       </div>
@@ -34,6 +35,9 @@ const Home = () => {
         {/* send props id of user to transaction */}
         <TransactionForm uid={user.uid} />
       </div>
+
+      {/* source code */}
+      
     </div>
   );
 };

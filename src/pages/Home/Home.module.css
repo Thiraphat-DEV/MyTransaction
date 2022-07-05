@@ -15,8 +15,9 @@
 
 .sidebar form {
   padding: 20px;
-  background: #e4ee;
+  background: #0097A7;
   border-radius: 10px;
+  box-shadow: 10px 10px rgba(255, 234, 0, .2);
 }
 
 .sidebar input,
@@ -49,6 +50,7 @@
 .sidebar h3 {
   color: #e4ee;
   margin-bottom: 20px;
+  border: 2px solid #000;
 }
 
 .sidebar aside {
@@ -57,6 +59,10 @@
 }
 .sidebar aside li {
   margin: 10px;
+}
+
+.addmenu {
+  border-radius: .5em ;
 }
 
 

@@ -2,9 +2,15 @@
 	max-width: 360px;
 	margin: 60px auto;
 	padding: 20px;
-
+	border: 2px solid #e55;
+	border-radius: 3ch;
+	background-color: #e55;
+	box-shadow:10px 10px  rgba(0, 0, 0, .5);
 }
-
+.login-form h1{
+	text-align: center;
+	color: #fff;
+}
 .login-form label {
 	display: block;
 	margin:30px auto;
@@ -18,6 +24,9 @@
 .login-form input {
 	padding: 8px 6px;
 	font-size: 1em;
+	border-radius: .6em;
 	color: #999;
+	border: none;
 	width: 100%;
+	box-shadow:3px 5px 5px rgba(0, 0, 0, .2);
 }

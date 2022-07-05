@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className={style.navbar}>
       <ul>
-        <li className={style.title}>Money Today</li>
+        <li className={style.title}>Money With <a href="https://cdn-icons-png.flaticon.com/512/25/25231.png?w=360">SourceCode</a></li>
         {!user && (
           <>
             <li>
@@ -27,7 +27,7 @@ const Navbar = () => {
 
         {user && (
           <>
-            <li>HEY: {user.displayName}</li>
+            <li>{user.displayName}</li>
             <li>
               {!isPending && (
                 <button className="btn" onClick={logout}>

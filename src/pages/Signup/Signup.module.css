@@ -2,7 +2,15 @@
 	max-width: 360px;
 	margin: 60px auto;
 	padding: 20px;
+	box-shadow:10px 10px  rgba(255, 64, 129, .5);
+	background-color: #40ad;
+	border: 2px solid #e55;
+	color: #fff;
+	border-radius: .5em;
 
+}
+.signup-form h1 {
+	text-align: center;
 }
 
 .signup-form label {
@@ -20,4 +28,6 @@
 	font-size: 1em;
 	color: #999;
 	width: 100%;
+	border-radius: .3em;
+	border: none;
 }

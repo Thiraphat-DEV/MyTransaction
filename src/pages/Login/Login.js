@@ -22,10 +22,10 @@ const Login = () => {
         <span>Email: </span>
         <input
           type="email"
-   
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
+          placeholder='Enter Email'
         />
       </label>
       <label htmlFor="password">
@@ -35,6 +35,7 @@ const Login = () => {
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
+          placeholder='Enter password'
         />
       </label>
 

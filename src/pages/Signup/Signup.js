@@ -28,6 +28,7 @@ const Signup = () => {
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
+          placeholder='Enter Email'
         />
       </label>
       <label htmlFor="password">
@@ -37,6 +38,7 @@ const Signup = () => {
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
+          placeholder='Enter Password'
         />
       </label>
       <label htmlFor="displayName">
@@ -46,6 +48,7 @@ const Signup = () => {
           value={displayName}
           required
           onChange={(e) => setDisplayName(e.target.value)}
+          placeholder="Enter Name"
         />
       </label>
 
