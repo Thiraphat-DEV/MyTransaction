@@ -11,11 +11,9 @@ const TransactionForm = ({ uid }) => {
   const submitTransaction = (e) => {
     //protect refresh form
     e.preventDefault();
-
-    //use function add to Doc
-    //  add unique id of user from authcontext with props
+    // use function add to Doc
+    // add unique id of user from authcontext with props
     addDocument({ uid, name, money });
-
     //check send to transaction document is  success
   };
 
@@ -35,6 +33,7 @@ const TransactionForm = ({ uid }) => {
           type="text"
           required
           onChange={(e) => setName(e.target.value)}
+          placeholder="Enter MenuName: "
         />
       </label>
       <label htmlFor="money">
@@ -44,6 +43,7 @@ const TransactionForm = ({ uid }) => {
           type="number"
           required
           onChange={(e) => setMoney(e.target.value)}
+          placeholder="Enter Money: "
         />
       </label>
       <button className="addmenu">Add</button>
