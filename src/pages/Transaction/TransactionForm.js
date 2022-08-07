@@ -39,6 +39,7 @@ const TransactionForm = ({ uid }) => {
       <label htmlFor="money">
         <span>Money($): </span>
         <input
+        aria-label="cost"
           value={money}
           type="number"
           required
