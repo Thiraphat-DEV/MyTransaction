@@ -65,7 +65,7 @@ function renderForm() {
 describe("render FormTransaction component", () => {
   it("check text in form", async () => {
     await renderForm();
-    const btnAdd = screen.getAllByRole(
+    const btnAdd = screen.getByRole(
       "button",
       { name: "Add" },
       { pressed: true }
