@@ -70,14 +70,14 @@ describe("render FormTransaction component", () => {
       { name: "Add" },
       { pressed: true }
     );
-    expect(screen.getByLabelText(/Menu Name: /i)).toBe(/Menu Name: /i);
-    expect(screen.getByPlaceholderText(/Enter MenuName: /i)).toBe(
-      /Enter MenuName: /i
-    );
-    expect(screen.getByLabelText(/Money($): /i)).toBe(/Money($): /i);
-    expect(screen.getByPlaceholderText(/Enter Money: /i)).toBe(
-      /Enter Money: /i
-    );
+    const labelMenu = screen.getByLabelText(/Menu Name: /i);
+    const moneyLabel = screen.getByLabelText(/Money($): /i);
+    const enterName = screen.getByPlaceholderText(/Enter MenuName: /i);
+    const enterMoney = screen.getByPlaceholderText(/Enter Money: /i);
+    expect(labelMenu).toBe("Menu Name: ");
+    expect(enterName).toBe(/Enter MenuName: /i);
+    expect(moneyLabel).toBe(/Money($): /i);
+    expect(enterMoney).toBe(/Enter Money: /i);
     expect(fireEvent.click(btnAdd)).not.toBeDisabled();
     await screen.findByText("Add");
   });
