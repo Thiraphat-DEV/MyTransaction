@@ -62,42 +62,43 @@ describe("render component Login", () => {
     expect(labelPassword).toBe("Password: ");
     expect(btnLoading).toBeDisabled();
   });
+  // email
   it("It should not allowed empty string", () => {
-    const { input } = setup();
-    expect(input.value).toBe(""); // empty before
-    fireEvent.change(input, { target: { value: "pasta" } });
-    expect(input.value).toBe(""); //empty after
+    const { inputEmail } = setup();
+    expect(inputEmail.value).toBe(""); // empty before
+    fireEvent.change(inputEmail, { target: { value: "thiraphat@gmail.com" } });
+    expect(inputEmail.value).toBe(""); //empty after
   });
 
   it("It should be keep $ of the input", () => {
-    const { input } = setup();
-    fireEvent.change(input, { target: { value: "82" } });
-    expect(input.value).toBe("$82");
+    const { inputPassword } = setup();
+    fireEvent.change(inputPassword, { target: { value: "helloword" } });
+    expect(inputPassword.value).toBe("$82");
   });
   it("It should be add value somtum", () => {
-    const { input } = setup();
-    expect(input.value).toBe(""); // empty before
-    fireEvent.change(input, { target: { value: "somtum kaiyang" } });
-    expect(input.value).toBe(""); //empty after
+    const { inputEmail } = setup();
+    expect(inputEmail.value).toBe(""); // empty before
+    fireEvent.change(inputEmail, { target: { value: "Demo@bru.ac.th" } });
+    expect(inputEmail.value).toBe(""); //empty after
   });
   it("It should be allow a $ to be in the input when the value is changed", () => {
-    const { input } = setup();
-    fireEvent.change(input, { target: { value: "$200.0" } });
-    expect(input.value).toBe("$200.0");
+    const { inputPassword } = setup();
+    fireEvent.change(inputPassword, { target: { value: "thiraphat4545" } });
+    expect(inputPassword.value).toBe("$200.0");
   });
 
   it("It should not allowed value noodle", () => {
-    const { input } = setup();
-    expect(input.value).toBe(""); // empty before
-    fireEvent.change(input, { target: { value: "noodle" } });
-    expect(input.value).toBe(""); //empty after
+    const { inputEmail } = setup();
+    expect(inputEmail.value).toBe(""); // empty before
+    fireEvent.change(inputEmail, { target: { value: "hello@gmail.com" } });
+    expect(inputEmail.value).toBe(""); //empty after
   });
 
   it("it should be to remove $", () => {
-    const { input } = setup();
-    fireEvent.change(input, { target: { value: "1000" } });
-    expect(input.value).toBe("$1000"); // need to make a change so React registers "" as a change
-    fireEvent.change(input, { target: { value: "" } });
-    expect(input.value).toBe("");
+    const { inputPassword } = setup();
+    fireEvent.change(inputPassword, { target: { value: "gmailhello21" } });
+    expect(inputPassword.value).toBe("gmailhello20"); // need to make a change so React registers "" as a change
+    fireEvent.change(inputPassword, { target: { value: "" } });
+    expect(inputPassword.value).toBe("");
   });
 });
