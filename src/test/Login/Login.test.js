@@ -47,7 +47,7 @@ function renderLogin() {
   render(<Login />);
 }
 describe("render component Login", () => {
-  it("it should be render text is visible", async () => {
+  test("it should be render text is visible", async () => {
     await renderLogin();
     const btnLogin = screen.getByRole(
       "button",
