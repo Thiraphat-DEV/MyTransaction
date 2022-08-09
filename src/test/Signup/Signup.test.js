@@ -85,8 +85,10 @@ describe("render component Signup", () => {
     const { inputPassword } = user();
     fireEvent.change(inputPassword, { target: { value: "helloword123" } });
     expect(inputPassword.value).toBe(/helloword123/i);
+    //after add to success
     fireEvent.change(inputPassword, { target: { value: "" } });
     expect(inputPassword.value).toBe("");
+    
   });
 test("it should be add value is diplayName", () => {
     const { inputDisplayName} = user();
