@@ -3,35 +3,39 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { useState } from "react";
 
-function user() {
+function User() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleChangePassword = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const inputPassword = e.currentTarget.value;
-    if (isNaN(password)) return;
+    if (password === "") return;
     setPassword(inputPassword);
   };
   const handleChangeEmail = (e) => {
     e.preventDefault();
     const inputEmail = e.currentTarget.value;
-    if (isNaN(inputEmail)) return;
+    if (inputEmail === "") return;
     setEmail(inputEmail);
   };
 
   return (
     <>
       <input value={email} aria-label="email" onChange={handleChangeEmail} />
-      <input value={password} aria-label="password" onChange={handleChangePassword} />
+      <input
+        value={password}
+        aria-label="password"
+        onChange={handleChangePassword}
+      />
     </>
   );
 }
 
-const setup = () => {
-  const utils = render(<user />);
+const user = () => {
+  const utils = render(<User />);
   const inputEmail = utils.getByLabelText("email");
-  const inputPassword= utils.getByLabelText("password");
+  const inputPassword = utils.getByLabelText("password");
   return {
     inputEmail,
     inputPassword,
@@ -63,42 +67,60 @@ describe("render component Login", () => {
     expect(btnLoading).toBeDisabled();
   });
   // email
-  it("It should not allowed empty string", () => {
-    const { inputEmail } = setup();
+  test("it should be add value is email", () => {
+    const { inputEmail } = user();
     expect(inputEmail.value).toBe(""); // empty before
     fireEvent.change(inputEmail, { target: { value: "thiraphat@gmail.com" } });
-    expect(inputEmail.value).toBe(""); //empty after
+    expect(inputEmail.value).toBe(/thiraphat@gmail.com/i); //empty after
+    //after add success
+    // fireEvent.change(inputEmail, {target: {value: ''}})
+    // expect(inputEmail).toBe('')
   });
 
-  it("It should be keep $ of the input", () => {
-    const { inputPassword } = setup();
-    fireEvent.change(inputPassword, { target: { value: "helloword" } });
-    expect(inputPassword.value).toBe("$82");
+  test("it should be add value is password", () => {
+    const { inputPassword } = user();
+    fireEvent.change(inputPassword, { target: { value: "helloword123" } });
+    expect(inputPassword.value).toBe(/helloword123/i);
+    // fireEvent.change(inputPassword, { target: { value: "" } });
+    // expect(inputPassword.value).toBe("");
   });
-  it("It should be add value somtum", () => {
-    const { inputEmail } = setup();
+  test("it should be add value is email test", () => {
+    const { inputEmail } = user();
     expect(inputEmail.value).toBe(""); // empty before
     fireEvent.change(inputEmail, { target: { value: "Demo@bru.ac.th" } });
-    expect(inputEmail.value).toBe(""); //empty after
+    expect(inputEmail.value).toBe(/Demo@bru.ac.th/i);
+    // fireEvent.change(inputEmail, { target: { value: "" } });
+    // expect(inputEmail.value).toBe("");
   });
-  it("It should be allow a $ to be in the input when the value is changed", () => {
-    const { inputPassword } = setup();
+test("It should be add value is Password", () => {
+    const { inputPassword } = user();
     fireEvent.change(inputPassword, { target: { value: "thiraphat4545" } });
-    expect(inputPassword.value).toBe("$200.0");
+    expect(inputPassword.value).toBe(/thiraphat4545/i);
+    // fireEvent.change(inputPassword, { target: { value: "" } });
+    // expect(inputPassword.value).toBe("");
   });
 
-  it("It should not allowed value noodle", () => {
-    const { inputEmail } = setup();
+  test("It should be add value is email", () => {
+    const { inputEmail } = user();
     expect(inputEmail.value).toBe(""); // empty before
     fireEvent.change(inputEmail, { target: { value: "hello@gmail.com" } });
-    expect(inputEmail.value).toBe(""); //empty after
+    expect(inputEmail.value).toBe(/hello@gmail.com/i); //empty after
+    // fireEvent.change(inputEmail, { target: { value: "" } });
+    // expect(inputEmail.value).toBe("");
   });
 
-  it("it should be to remove $", () => {
-    const { inputPassword } = setup();
+  test("it should be check password after pass value success", () => {
+    const { inputPassword, inputEmail } = user();
     fireEvent.change(inputPassword, { target: { value: "gmailhello21" } });
-    expect(inputPassword.value).toBe("gmailhello20"); // need to make a change so React registers "" as a change
-    fireEvent.change(inputPassword, { target: { value: "" } });
-    expect(inputPassword.value).toBe("");
+    expect(inputPassword.value).toBe(/gmailhello21/i); // need to make a change so React registers "" as a change
+    fireEvent.change(inputEmail, {
+      target: { value: "gmail.hello@gmail.com" },
+    });
+
+    expect(inputEmail.value).toBe(/gmail.hello@gmail.com/i); // need to make a change so React registers "" as a change
+    // fireEvent.change(inputPassword, { target: { value: "" } });
+    // fireEvent.change(inputEmail, { target: { value: "" } });
+    // expect(inputEmail.value).toBe("");
+    // expect(inputPassword.value).toBe("");
   });
 });
